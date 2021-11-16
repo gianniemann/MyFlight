@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyFlight</string>
+    <string name="field_name">Namen eingeben</string>
+    <string name="zielort">Zielort</string>
 </resources>
