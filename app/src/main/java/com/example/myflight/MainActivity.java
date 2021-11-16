@@ -1,11 +1,12 @@
 package com.example.myflight;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
   /**Button btnHit;
@@ -16,10 +17,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
         Button next = (Button) findViewById(R.id.speichernbtn);
+        EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                String name = nameFeld.getText().toString();
                 Intent myIntent = new Intent(view.getContext(), Zielort.class);
-                startActivityForResult(myIntent, 0);
+                Bundle bundle = new Bundle();
+                bundle.putString("BenutzerName", name);
+                myIntent.putExtras(bundle);
+                startActivity(myIntent);
             }
         });
     }
