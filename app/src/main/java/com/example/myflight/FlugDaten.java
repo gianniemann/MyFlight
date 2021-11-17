@@ -1,5 +1,7 @@
 package com.example.myflight;
 
-public class FlugDaten {
+import com.orm.SugarRecord;
+
+public class FlugDaten extends SugarRecord {
 
 }
