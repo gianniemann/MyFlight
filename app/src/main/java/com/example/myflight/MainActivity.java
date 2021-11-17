@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.orm.SugarContext;
+
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
   /**Button btnHit;
@@ -15,19 +19,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_page);
-        Button next = (Button) findViewById(R.id.speichernbtn);
-        EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
-        next.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                String name = nameFeld.getText().toString();
-                Intent myIntent = new Intent(view.getContext(), Zielort.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("BenutzerName", name);
-                myIntent.putExtras(bundle);
-                startActivity(myIntent);
-            }
-        });
+        SugarContext.init(this);
+        /*
+        List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
+        for (Benutzer b11 : b2) {
+            System.out.println(b11.getName());
+        }
+        */
+        BenutzerDAO bDAO = new BenutzerDAO();
+        //Benutzer benutzer = bDAO.readBenutzer();
+        Bundle bundle = new Bundle();
+
+
+        /*if (benutzer != null){
+            setContentView(R.layout.zielort);
+        }else{*/
+            setContentView(R.layout.welcome_page);
+            Button next = (Button) findViewById(R.id.speichernbtn);
+            EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
+            String name = nameFeld.getText().toString();
+            bundle.putString("BenutzerName", name);
+            next.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Intent myIntent = new Intent(view.getContext(), Zielort.class);
+                    myIntent.putExtras(bundle);
+                    startActivity(myIntent);
+                }
+            });
+        /*}*/
+
     }
 
 
