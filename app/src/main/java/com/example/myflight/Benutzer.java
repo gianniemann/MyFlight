@@ -6,6 +6,9 @@ public class Benutzer extends SugarRecord {
     public Benutzer(String name){
         this.name = name;
     }
+    public Benutzer(){
+
+    }
 
     private String name;
 

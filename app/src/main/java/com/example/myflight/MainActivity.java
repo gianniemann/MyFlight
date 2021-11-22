@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.orm.SugarContext;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.List;
+import com.orm.SugarContext;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
   /**Button btnHit;
     TextView txtJson;
     ProgressDialog pd;**/
@@ -20,34 +18,51 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
-        /*
-        List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
+
+        /*List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
         for (Benutzer b11 : b2) {
+            System.out.println("halloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
             System.out.println(b11.getName());
-        }
-        */
+            Log.d( "DB_Test", "Benutzername: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }*/
+        //Test goToZielort();
+
         BenutzerDAO bDAO = new BenutzerDAO();
-        //Benutzer benutzer = bDAO.readBenutzer();
+        Benutzer benutzer;
+
+        try {
+            benutzer = bDAO.readBenutzer();
+        }catch (Exception e){
+            e.printStackTrace();
+            benutzer = null;
+        }
+
         Bundle bundle = new Bundle();
 
 
-        /*if (benutzer != null){
-            setContentView(R.layout.zielort);
-        }else{*/
+        if (benutzer != null){
+            goToZielort();
+        }else{
             setContentView(R.layout.welcome_page);
             Button next = (Button) findViewById(R.id.speichernbtn);
-            EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
-            String name = nameFeld.getText().toString();
-            bundle.putString("BenutzerName", name);
+
             next.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+                    EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
+                    String name = nameFeld.getText().toString();
+                    bundle.putString("BenutzerName", name);
+
                     Intent myIntent = new Intent(view.getContext(), Zielort.class);
                     myIntent.putExtras(bundle);
                     startActivity(myIntent);
                 }
             });
-        /*}*/
+        }
 
+    }
+    private void goToZielort() {
+        Intent myIntent = new Intent(this, Zielort.class);
+        startActivity(myIntent);
     }
 
 

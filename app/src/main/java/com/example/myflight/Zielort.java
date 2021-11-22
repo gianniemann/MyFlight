@@ -13,12 +13,21 @@ public class Zielort extends Activity {
         setContentView(R.layout.zielort);
         SugarContext.init(this);
 
+        String text;
         BenutzerDAO bDAO = new BenutzerDAO();
-        Benutzer benutzerDB = bDAO.readBenutzer();
+        Benutzer benutzerDB;
+        try {
+            benutzerDB = bDAO.readBenutzer();
+        }catch (Exception e){
+            e.printStackTrace();
+            benutzerDB = null;
+        }
+
 
         if (benutzerDB != null){
-            TextView willkommen = (TextView) findViewById(R.id.textView3);
-            willkommen.append(" " + benutzerDB.getName());
+            text = "Willkommen " + benutzerDB.getName();
+            TextView willkommen = (TextView) findViewById(R.id.willkommen);
+            willkommen.setText(text);
 
         }else {
             Bundle bundle = getIntent().getExtras();
@@ -27,8 +36,13 @@ public class Zielort extends Activity {
 
             bDAO.insertBenutzer(b);
 
-            TextView willkommen = (TextView) findViewById(R.id.textView3);
-            willkommen.append(" " + b.getName());
+            text = "Willkommen " + b.getName();
+
+            TextView willkommen = (TextView) findViewById(R.id.willkommen);
+            willkommen.setText(text);
         }
+
+
     }
+
 }
