@@ -10,43 +10,66 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Abmelden"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="645dp" />
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="345dp"
         android:layout_height="49dp"
         android:text="Suchen"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="290dp" />
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+        app:layout_constraintVertical_bias="0.098" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="109dp"
-        android:layout_height="38dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="72dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Zielort"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="195dp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="344dp"
-        android:layout_height="33dp"
-        android:hint="Zielort"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="244dp" />
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/willkommen" />
 
     <EditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="343dp"
+        android:layout_height="53dp"
+        android:hint="Zielort"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
+
+    <TextView
         android:id="@+id/willkommen"
         android:layout_width="352dp"
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Willkommen NAME"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="42dp" />
+        android:text="Willkommen"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         -->
+        <activity android:name=".Abfluege"></activity>
         <activity android:name=".Zielort"></activity>
         <meta-data android:name="DATABASE" android:value="meinedb.db" />
         <meta-data android:name="VERSION" android:value="1" />
