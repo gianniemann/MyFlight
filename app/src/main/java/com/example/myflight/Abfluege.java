@@ -21,14 +21,19 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Abfluege extends Activity {
     TableLayout table;
+    String search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.abfluege);
+        Bundle bundle = getIntent().getExtras();
+        search = bundle.getString("ZielOrt");
         new JsonTask().execute("https://dxp-fds.flughafen-zuerich.ch/flights");
     }
 
@@ -91,6 +96,7 @@ public class Abfluege extends Activity {
             try {
                 table = (TableLayout) findViewById(R.id.myTableLayout1);
                 JSONArray jsonArray = new JSONArray(result);
+                List<String> flugnummern = new ArrayList<>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsnobj = jsonArray.getJSONObject(i);
                     TableRow row = new TableRow(new ContextThemeWrapper(Abfluege.this,R.style.MyTableRowStyle));
@@ -102,10 +108,26 @@ public class Abfluege extends Activity {
                     String airline = "";
                     String typ = "";
 
-                    if (jsnobj.getString("flightType").equals("D")) {
-                        if (jsnobj.has("FLC") && jsnobj.has("FLN"))
-                            flugnummer = jsnobj.getString("FLC");
+
+
+                    List<String> testList = new ArrayList<>();
+                    String testString = "abc";
+                    testList.add(testString);
+
+                    if(!testList.contains("abc")){
+                        Log.d("TEST SUCCESSFULL","abc is not in testlist");
+                    }else{
+                        Log.d("TEST UNSUCCESSFULL","abc is in testlist");
+                    }
+
+                    if (jsnobj.has("FLC") && jsnobj.has("FLN"))
+                        flugnummer = jsnobj.getString("FLC");
                         flugnummer += " " + jsnobj.getString("FLN");
+
+                    if (jsnobj.getString("flightType").equals("D") && jsnobj.getString("search").contains(search) && !flugnummern.contains(flugnummer)) {
+                        if (jsnobj.has("FLC") && jsnobj.has("FLN"))
+                            flugnummern.add(flugnummer);
+                        System.out.println(flugnummern);
 
                         if (jsnobj.has("STD"))
                             std = jsnobj.getString("STD");
