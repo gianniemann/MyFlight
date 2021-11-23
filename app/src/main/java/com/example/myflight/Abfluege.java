@@ -1,10 +1,17 @@
 package com.example.myflight;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -35,7 +42,29 @@ public class Abfluege extends Activity {
         Bundle bundle = getIntent().getExtras();
         search = bundle.getString("ZielOrt");
         new JsonTask().execute("https://dxp-fds.flughafen-zuerich.ch/flights");
+        Button zurueck = (Button) findViewById(R.id.zurueckbtn);
+        zurueck.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), Zielort.class);
+                startActivity(myIntent);
+            }
+        });
+        Button search = (Button) findViewById(R.id.searchbtn);
+        EditText zielort = (EditText) findViewById(R.id.zielortListeInput);
+        search.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String zielorttxt = zielort.getText().toString();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("ZielOrt", zielorttxt);
+
+                Intent myIntent = new Intent(Abfluege.this, Abfluege.class);
+                myIntent.putExtras(bundle);
+                startActivity(myIntent);
+            }
+        });
     }
+
 
     private class JsonTask extends AsyncTask<String, String, String> {
 

@@ -1,33 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abflüge"
+        android:textSize="50sp" />
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/zielortListeInput"
+            android:layout_width="200sp"
+            android:layout_height="53sp"
+            android:layout_gravity="right"
+            android:hint="Zielort"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.408" />
+
+        <Button
+            android:id="@+id/searchbtn"
+            android:layout_width="45sp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:drawableEnd="@android:drawable/ic_menu_search"
+            android:drawableTint="#000000"
+            android:foregroundTint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF"
+            app:iconTint="#000000" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/layout"
-        android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="550sp"
         android:layout_marginTop="5dip"
+        android:fillViewport="true"
         android:scrollbarStyle="outsideInset"
-        android:fillViewport="true">
+        android:scrollbars="horizontal|vertical">
 
         <HorizontalScrollView
             android:id="@+id/horizontalView"
-            android:layout_height="wrap_content"
-            android:scrollbars="horizontal|vertical"
             android:layout_width="wrap_content"
-            android:layout_marginTop="5dip">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:scrollbars="horizontal|vertical">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout
                 android:id="@+id/myTableLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="100dp"
-                android:layout_marginRight="1000dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:background="#0079D6"
@@ -37,46 +96,68 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Flugnummer  "/>
+                        android:paddingRight="7sp"
+                        android:text="Flugnummer  " />
                     <!-- android:textSize="1sp"-->
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="Abflug geplant  " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="Abflug erwartet  " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="Zielort  " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="status  " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="airline  " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="7sp"
                         android:text="typ  " />
+
                 </TableRow>
             </TableLayout>
         </HorizontalScrollView>
     </ScrollView>
 </LinearLayout>
+
+    <Button
+        android:id="@+id/zurueckbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/holo_blue_light"
+        android:text="Zurück"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+        app:layout_constraintVertical_bias="0.098" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
