@@ -3,6 +3,8 @@ package com.example.myflight;
 import com.orm.SugarRecord;
 
 public class Benutzer extends SugarRecord {
+
+    private String name;
     /**
      *
      * @param name
@@ -14,8 +16,6 @@ public class Benutzer extends SugarRecord {
     public Benutzer(){
 
     }
-
-    private String name;
 
     /**
      *

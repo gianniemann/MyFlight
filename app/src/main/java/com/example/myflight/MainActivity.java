@@ -12,19 +12,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.orm.SugarContext;
 
 public class MainActivity extends AppCompatActivity{
-  /**Button btnHit;
-    TextView txtJson;
-    ProgressDialog pd;**/
-    @Override
+    /**
+     * Button btnHit;
+     * TextView txtJson;
+     * ProgressDialog pd;
+     *
+     * @param savedInstanceState
+     */
+  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
 
         /*List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
         for (Benutzer b11 : b2) {
-            System.out.println("halloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+            System.out.println("--------------------------------------------------------------------");
             System.out.println(b11.getName());
-            Log.d( "DB_Test", "Benutzername: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Log.d( "DB_Test", "--------------------------------------------------------------------");
         }*/
 
         BenutzerDAO bDAO = new BenutzerDAO();
