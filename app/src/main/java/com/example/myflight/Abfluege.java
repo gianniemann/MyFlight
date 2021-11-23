@@ -78,7 +78,7 @@ public class Abfluege extends Activity {
         /**
          *
          * @param params
-         * @return
+         * @return JSON as String
          */
         protected String doInBackground(String... params) {
 

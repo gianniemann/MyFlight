@@ -26,7 +26,7 @@
         android:id="@+id/speichernBTN"
         android:layout_width="357dp"
         android:layout_height="46dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/btngreen"
         android:text="Speichern"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
