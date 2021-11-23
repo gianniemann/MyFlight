@@ -2,7 +2,6 @@ package com.example.myflight;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.orm.SugarContext;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
   /**Button btnHit;
@@ -23,12 +20,12 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
 
-        List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
+        /*List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
         for (Benutzer b11 : b2) {
             System.out.println("halloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
             System.out.println(b11.getName());
             Log.d( "DB_Test", "Benutzername: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        }
+        }*/
 
         BenutzerDAO bDAO = new BenutzerDAO();
         Benutzer benutzer;
