@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity{
         }
 
     }
+
+    /**
+     * Opens Zielort Class
+     */
     private void goToZielort() {
         Intent myIntent = new Intent(this, Zielort.class);
         startActivity(myIntent);

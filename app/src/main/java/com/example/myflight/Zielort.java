@@ -11,6 +11,10 @@ import android.widget.TextView;
 import com.orm.SugarContext;
 
 public class Zielort extends Activity {
+
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

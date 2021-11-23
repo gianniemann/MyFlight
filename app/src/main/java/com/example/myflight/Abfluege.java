@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +32,11 @@ import java.util.List;
 public class Abfluege extends Activity {
     TableLayout table;
     String search;
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,11 @@ public class Abfluege extends Activity {
 
         }
 
+        /**
+         *
+         * @param params
+         * @return
+         */
         protected String doInBackground(String... params) {
 
 
@@ -119,6 +126,10 @@ public class Abfluege extends Activity {
             return null;
         }
 
+        /**
+         *
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
@@ -218,6 +229,12 @@ public class Abfluege extends Activity {
 
 
         }
+
+        /**
+         *
+         * @param std
+         * @return std
+         */
         public String convertDate(String std){
             String date_s = std;
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
