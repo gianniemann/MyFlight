@@ -25,16 +25,15 @@
     <Button
         android:id="@+id/speichernBTN"
         android:layout_width="357dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="388dp"
+        android:layout_height="46dp"
+        android:background="@android:color/holo_blue_light"
         android:text="Speichern"
-        android:background="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="0.108" />
 
     <TextView
         android:id="@+id/textView2"

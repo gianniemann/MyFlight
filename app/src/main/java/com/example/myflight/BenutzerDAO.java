@@ -18,18 +18,6 @@ public class BenutzerDAO extends SugarRecord {
     }
 
     public void deleteBenutzer() {
-        /*Benutzer benutzer = null;
-        int zaehler = 1;
-        do {
-            try {
-                benutzer = Benutzer.findById(Benutzer.class, zaehler);
-                benutzer.delete();
-                Log.d("DB_ACCESS", "Benutzer "+zaehler+" deleted");
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            zaehler = zaehler + 1;
-        }while (benutzer != null);*/
         Benutzer.deleteAll(Benutzer.class);
         Log.d("DB_ACCESS", "Benutzer deleted");
     }

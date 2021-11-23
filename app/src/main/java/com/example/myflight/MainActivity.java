@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-    /**
+    /*
      btnHit = (Button) findViewById(R.id.btnHit);
     txtJson = (TextView) findViewById(R.id.tvJsonItem);
 
@@ -84,5 +84,5 @@ btnHit.setOnClickListener(new View.OnClickListener() {
             new JsonTask().execute("Url address here");
         }
     });
-**/
+*/
 }
