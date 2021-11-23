@@ -2,13 +2,17 @@ package com.example.myflight;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.orm.SugarContext;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
   /**Button btnHit;
@@ -19,13 +23,12 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
 
-        /*List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
+        List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
         for (Benutzer b11 : b2) {
             System.out.println("halloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
             System.out.println(b11.getName());
             Log.d( "DB_Test", "Benutzername: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        }*/
-        //Test goToZielort();
+        }
 
         BenutzerDAO bDAO = new BenutzerDAO();
         Benutzer benutzer;
@@ -44,17 +47,24 @@ public class MainActivity extends AppCompatActivity{
             goToZielort();
         }else{
             setContentView(R.layout.welcome_page);
-            Button next = (Button) findViewById(R.id.speichernbtn);
+            Button next = (Button) findViewById(R.id.speichernBTN);
 
             next.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     EditText nameFeld = (EditText) findViewById(R.id.editTextTextPersonName);
                     String name = nameFeld.getText().toString();
-                    bundle.putString("BenutzerName", name);
 
-                    Intent myIntent = new Intent(view.getContext(), Zielort.class);
-                    myIntent.putExtras(bundle);
-                    startActivity(myIntent);
+                    if (name.isEmpty() || name.charAt(0) == ' '){
+                        TextView anweisungView = (TextView) findViewById(R.id.textView2);
+                        anweisungView.setError("Ungültiger Name bitte nochmals eingeben!");
+
+                    }else {
+                        bundle.putString("BenutzerName", name);
+
+                        Intent myIntent = new Intent(view.getContext(), Zielort.class);
+                        myIntent.putExtras(bundle);
+                        startActivity(myIntent);
+                    }
                 }
             });
         }
