@@ -101,7 +101,7 @@ public class Abfluege extends Activity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line + "\n");
-                    Log.d("Response: ", "> " + line + "\n");   //here u ll get whole response...... :-)
+                    Log.d("Response: ", "> " + line + "\n");   //ganze Response
 
                 }
                 return buffer.toString();
