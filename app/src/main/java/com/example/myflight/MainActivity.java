@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity{
 
                     if (name.isEmpty() || name.charAt(0) == ' '){
                         TextView anweisungView = (TextView) findViewById(R.id.textView2);
-                        anweisungView.setError("Ungültiger Name bitte nochmals eingeben!");
+                        anweisungView.setError("");
+                        anweisungView.setText("Ungültiger Name bitte nochmals eingeben!");
 
                     }else {
                         bundle.putString("BenutzerName", name);
@@ -79,8 +80,6 @@ public class MainActivity extends AppCompatActivity{
         Intent myIntent = new Intent(this, Zielort.class);
         startActivity(myIntent);
     }
-
-
 
     /*
      btnHit = (Button) findViewById(R.id.btnHit);

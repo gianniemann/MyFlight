@@ -153,7 +153,7 @@
         android:layout_width="wrap_content"
         android:layout_height="49dp"
         android:layout_gravity="bottom"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/btngreen"
         android:text="Zurück"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
