@@ -26,18 +26,18 @@ public class Zielort extends Activity {
         Benutzer benutzerDB;
         try {
             benutzerDB = bDAO.readBenutzer();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             benutzerDB = null;
         }
 
 
-        if (benutzerDB != null){
+        if (benutzerDB != null) {
             text = "Willkommen " + benutzerDB.getName();
             TextView willkommen = (TextView) findViewById(R.id.willkommen);
             willkommen.setText(text);
 
-        }else {
+        } else {
             Bundle bundle = getIntent().getExtras();
             String benutzerName = bundle.getString("BenutzerName");
             Benutzer b = new Benutzer(benutzerName);

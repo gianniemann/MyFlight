@@ -80,16 +80,4 @@ public class MainActivity extends AppCompatActivity{
         Intent myIntent = new Intent(this, Zielort.class);
         startActivity(myIntent);
     }
-
-    /*
-     btnHit = (Button) findViewById(R.id.btnHit);
-    txtJson = (TextView) findViewById(R.id.tvJsonItem);
-
-btnHit.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            new JsonTask().execute("Url address here");
-        }
-    });
-*/
 }

@@ -26,15 +26,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Abfluege extends Activity {
     TableLayout table;
     String search;
 
     /**
-     *
      * @param savedInstanceState
      */
     @Override
@@ -76,7 +77,6 @@ public class Abfluege extends Activity {
         }
 
         /**
-         *
          * @param params
          * @return JSON as String
          */
@@ -127,7 +127,6 @@ public class Abfluege extends Activity {
         }
 
         /**
-         *
          * @param result
          */
         @Override
@@ -139,30 +138,18 @@ public class Abfluege extends Activity {
                 List<String> flugnummern = new ArrayList<>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsnobj = jsonArray.getJSONObject(i);
-                    TableRow row = new TableRow(new ContextThemeWrapper(Abfluege.this,R.style.MyTableRowStyle));
+                    TableRow row = new TableRow(new ContextThemeWrapper(Abfluege.this, R.style.MyTableRowStyle));
                     String flugnummer = "";
                     String std = "";
                     String etd = "";
                     String cityDe = "";
                     String statusTextDe = "";
                     String airline = "";
-                    String typ = "";
-
-
-
-                    List<String> testList = new ArrayList<>();
-                    String testString = "abc";
-                    testList.add(testString);
-
-                    if(!testList.contains("abc")){
-                        Log.d("TEST SUCCESSFULL","abc is not in testlist");
-                    }else{
-                        Log.d("TEST UNSUCCESSFULL","abc is in testlist");
-                    }
+                    String gat = "";
 
                     if (jsnobj.has("FLC") && jsnobj.has("FLN"))
                         flugnummer = jsnobj.getString("FLC");
-                        flugnummer += " " + jsnobj.getString("FLN");
+                    flugnummer += " " + jsnobj.getString("FLN");
 
                     if (jsnobj.getString("flightType").equals("D") && jsnobj.getString("search").contains(search) && !flugnummern.contains(flugnummer)) {
                         if (jsnobj.has("FLC") && jsnobj.has("FLN"))
@@ -184,30 +171,30 @@ public class Abfluege extends Activity {
                         if (jsnobj.has("airline"))
                             airline = jsnobj.getString("airline");
 
-                        if (jsnobj.has("TYP"))
-                            typ = jsnobj.getString("TYP");
+                        if (jsnobj.has("GAT"))
+                            gat = jsnobj.getString("GAT");
 
 
-                        TextView tv1 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
+                        TextView tv1 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv1.setText(flugnummer);
-                        TextView tv2 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
-                        if(!std.equalsIgnoreCase(""))
+                        TextView tv2 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
+                        if (!std.equalsIgnoreCase(""))
                             std = convertDate(std);
 
                         tv2.setText(std);
-                        TextView tv3 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
-                        if(!etd.equalsIgnoreCase(""))
+                        TextView tv3 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
+                        if (!etd.equalsIgnoreCase(""))
                             etd = convertDate(etd);
 
                         tv3.setText(etd);
-                        TextView tv4 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
+                        TextView tv4 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv4.setText(cityDe);
-                        TextView tv5 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
+                        TextView tv5 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv5.setText(statusTextDe);
-                        TextView tv6 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
+                        TextView tv6 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv6.setText(airline);
-                        TextView tv7 = new TextView(new ContextThemeWrapper(Abfluege.this,R.style.MyTextViewStyle));
-                        tv7.setText(typ);
+                        TextView tv7 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
+                        tv7.setText(gat);
 
 
                         row.addView(tv1);
@@ -215,27 +202,26 @@ public class Abfluege extends Activity {
                         row.addView(tv3);
                         row.addView(tv4);
                         row.addView(tv5);
-                        row.addView(tv6);
                         row.addView(tv7);
+                        row.addView(tv6);
                         table.addView(row);
                     }
 
                 }
-                Log.d("JSON DONE","JSON SUCCESFULLY READ");
+                Log.d("JSON DONE", "JSON SUCCESFULLY READ");
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d("JSON FAILED","JSON FAILED READ");
+                Log.d("JSON FAILED", "JSON FAILED READ");
             }
 
 
         }
 
         /**
-         *
          * @param std
          * @return std
          */
-        public String convertDate(String std){
+        public String convertDate(String std) {
             String date_s = std;
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             try {
@@ -243,8 +229,18 @@ public class Abfluege extends Activity {
 
                 SimpleDateFormat dt1 = new SimpleDateFormat("HH:mm");
                 System.out.println(dt1.format(date));
-                std = dt1.format(date);
-            }catch(Exception e){
+                String tmpTimte = dt1.format(date);
+                Log.d("STD NORMAL",std);
+
+                //SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+                Date myDate = dt1.parse(tmpTimte);
+                Calendar cal =Calendar.getInstance();
+                cal.setTime(myDate);
+                cal.add(Calendar.HOUR_OF_DAY,1); // this will add one hour
+                myDate = cal.getTime();
+                std = dt1.format(myDate);
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 

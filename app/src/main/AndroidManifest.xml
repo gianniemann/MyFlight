@@ -18,21 +18,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <!-- <activity
-            android:name=".Zielort"
-        <intent-filter>
+        <activity
+            android:name=".Abfluege"
+            android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".Zielort"
 
-            <action android:name="android.intent.action.MAIN" />
+            ></activity>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        -->
-        <activity android:name=".Abfluege"></activity>
-        <activity android:name=".Zielort"></activity>
-        <meta-data android:name="DATABASE" android:value="meinedb.db" />
-        <meta-data android:name="VERSION" android:value="1" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example." />
+        <meta-data
+            android:name="DATABASE"
+            android:value="meinedb.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example." />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -11,16 +11,15 @@ public class BenutzerDAO extends SugarRecord {
      */
     public void insertBenutzer(Benutzer benutzer) {
         benutzer.save();
-        Log.d( "DB_ACCESS", "Benutzer saved" );
+        Log.d("DB_ACCESS", "Benutzer saved");
     }
 
     /**
-     *
      * @return first Benutzer of Database
      */
     public Benutzer readBenutzer() {
         Benutzer benutzer = Benutzer.first(Benutzer.class);
-        Log.d( "DB_ACCESS", "Benutzername: "+ benutzer.getName() );
+        Log.d("DB_ACCESS", "Benutzername: " + benutzer.getName());
         return benutzer;
     }
 
