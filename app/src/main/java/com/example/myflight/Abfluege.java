@@ -9,6 +9,7 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,7 +35,8 @@ import java.util.Locale;
 public class Abfluege extends Activity {
     TableLayout table;
     String search;
-
+    ProgressBar pb;
+    TextView hinweis;
     /**
      * @param savedInstanceState
      */
@@ -44,6 +46,8 @@ public class Abfluege extends Activity {
         setContentView(R.layout.abfluege);
         Bundle bundle = getIntent().getExtras();
         search = bundle.getString("ZielOrt");
+        pb = (ProgressBar)findViewById(R.id.progressBar1);
+        hinweis = (TextView)findViewById(R.id.hinweisliste);
         new JsonTask().execute("https://dxp-fds.flughafen-zuerich.ch/flights");
         Button zurueck = (Button) findViewById(R.id.zurueckbtn);
         zurueck.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +56,7 @@ public class Abfluege extends Activity {
                 startActivity(myIntent);
             }
         });
+
         Button search = (Button) findViewById(R.id.searchbtn);
         EditText zielort = (EditText) findViewById(R.id.zielortListeInput);
         search.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +71,7 @@ public class Abfluege extends Activity {
                 startActivity(myIntent);
             }
         });
+
     }
 
 
@@ -73,7 +79,7 @@ public class Abfluege extends Activity {
 
         protected void onPreExecute() {
             super.onPreExecute();
-
+            pb.setVisibility(View.VISIBLE);
         }
 
         /**
@@ -127,12 +133,16 @@ public class Abfluege extends Activity {
         }
 
         /**
+         *
          * @param result
          */
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            pb.setVisibility(View.INVISIBLE);
             try {
+
+                //JSON wird ausgelesen und in die Tabelle eingefüllt
                 table = (TableLayout) findViewById(R.id.myTableLayout1);
                 JSONArray jsonArray = new JSONArray(result);
                 List<String> flugnummern = new ArrayList<>();
@@ -205,10 +215,15 @@ public class Abfluege extends Activity {
                         row.addView(tv7);
                         row.addView(tv6);
                         table.addView(row);
+
                     }
 
                 }
-                Log.d("JSON DONE", "JSON SUCCESFULLY READ");
+                System.out.println("TABLE COUNT" + table.getChildCount());
+                if(table.getChildCount() < 2){
+                    hinweis.setText("Keine Ergebnisse");
+                }
+                Log.d("JSON DONE", "JSON SUCCESSFULLY READ");
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.d("JSON FAILED", "JSON FAILED READ");
@@ -218,6 +233,7 @@ public class Abfluege extends Activity {
         }
 
         /**
+         * Konvertiert das erhaltene Datum zu einem einfachen leserlichen Datum
          * @param std
          * @return std
          */
@@ -227,16 +243,14 @@ public class Abfluege extends Activity {
             try {
                 Date date = dt.parse(date_s);
 
-                SimpleDateFormat dt1 = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-HH:mm");
                 System.out.println(dt1.format(date));
                 String tmpTimte = dt1.format(date);
                 Log.d("STD NORMAL",std);
-
-                //SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
                 Date myDate = dt1.parse(tmpTimte);
                 Calendar cal =Calendar.getInstance();
                 cal.setTime(myDate);
-                cal.add(Calendar.HOUR_OF_DAY,1); // this will add one hour
+                cal.add(Calendar.HOUR_OF_DAY,1); // Eine Stunde hinzufügen
                 myDate = cal.getTime();
                 std = dt1.format(myDate);
 
