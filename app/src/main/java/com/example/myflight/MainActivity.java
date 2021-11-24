@@ -24,13 +24,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
 
-        /*List<Benutzer> b2= Benutzer.listAll(Benutzer.class);
-        for (Benutzer b11 : b2) {
-            System.out.println("--------------------------------------------------------------------");
-            System.out.println(b11.getName());
-            Log.d( "DB_Test", "--------------------------------------------------------------------");
-        }*/
-
         BenutzerDAO bDAO = new BenutzerDAO();
         Benutzer benutzer;
 

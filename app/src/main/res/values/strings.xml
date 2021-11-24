@@ -8,13 +8,16 @@
     <string name="hallo">Hallo</string>
     <string name="hinweis_name">Bitte geben sie ihren Namen ein</string>
     <string name="flugnummer">Flugnummer</string>
-    <string name="abflug_geplant">Abflug geplant</string>
-    <string name="abflug_erwartet">Abflug erwartet</string>
+    <string name="geplant">Geplant</string>
+    <string name="abflug_erwartet">Erwartet</string>
     <string name="status">Status</string>
     <string name="typ">Typ</string>
     <string name="airline">Airline</string>
     <string name="zurück">Zurück</string>
     <string name="gate">Gate</string>
+    <string name="abfluege">Abflüge</string>
+    <string name="speichern">Speichern</string>
+    <string name="datum">Datum</string>
 
 
 </resources>

@@ -107,7 +107,7 @@ public class Abfluege extends Activity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line + "\n");
-                    Log.d("Response: ", "> " + line + "\n");   //ganze Response
+                    //Log.d("Response: ", "> " + line + "\n");   //ganze Response
 
                 }
                 return buffer.toString();
@@ -156,6 +156,8 @@ public class Abfluege extends Activity {
                     String statusTextDe = "";
                     String airline = "";
                     String gat = "";
+                    String time= "";
+                    String tempstd = "";
 
                     if (jsnobj.has("FLC") && jsnobj.has("FLN"))
                         flugnummer = jsnobj.getString("FLC");
@@ -164,9 +166,9 @@ public class Abfluege extends Activity {
                     if (jsnobj.getString("flightType").equals("D") && jsnobj.getString("search").contains(search) && !flugnummern.contains(flugnummer)) {
                         if (jsnobj.has("FLC") && jsnobj.has("FLN"))
                             flugnummern.add(flugnummer);
-                        System.out.println(flugnummern);
 
                         if (jsnobj.has("STD"))
+                            tempstd = jsnobj.getString("STD");
                             std = jsnobj.getString("STD");
 
                         if (jsnobj.has("ETD"))
@@ -190,13 +192,13 @@ public class Abfluege extends Activity {
                         TextView tv2 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         if (!std.equalsIgnoreCase(""))
                             std = convertDate(std);
+                            tv2.setText(std);
 
-                        tv2.setText(std);
                         TextView tv3 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         if (!etd.equalsIgnoreCase(""))
-                            etd = convertDate(etd);
+                            etd = convertTime(etd);
+                            tv3.setText(etd);
 
-                        tv3.setText(etd);
                         TextView tv4 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv4.setText(cityDe);
                         TextView tv5 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
@@ -206,9 +208,14 @@ public class Abfluege extends Activity {
                         TextView tv7 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
                         tv7.setText(gat);
 
+                        TextView tv8 = new TextView(new ContextThemeWrapper(Abfluege.this, R.style.MyTextViewStyle));
+                        time = convertTime(tempstd);
+                        tv8.setText(time);
 
                         row.addView(tv1);
                         row.addView(tv2);
+                        //New
+                        row.addView(tv8);
                         row.addView(tv3);
                         row.addView(tv4);
                         row.addView(tv5);
@@ -219,7 +226,6 @@ public class Abfluege extends Activity {
                     }
 
                 }
-                System.out.println("TABLE COUNT" + table.getChildCount());
                 if(table.getChildCount() < 2){
                     hinweis.setText("Keine Ergebnisse");
                 }
@@ -243,10 +249,34 @@ public class Abfluege extends Activity {
             try {
                 Date date = dt.parse(date_s);
 
-                SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-HH:mm");
-                System.out.println(dt1.format(date));
+                SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
                 String tmpTimte = dt1.format(date);
-                Log.d("STD NORMAL",std);
+                Date myDate = dt1.parse(tmpTimte);
+                Calendar cal =Calendar.getInstance();
+                cal.setTime(myDate);
+                cal.add(Calendar.HOUR_OF_DAY,1); // Eine Stunde hinzufügen
+                myDate = cal.getTime();
+                std = dt1.format(myDate);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return std;
+        }
+        /**
+         * Konvertiert das erhaltene Datum zu einer einfachen leserlichen Uhrzeit
+         * @param std
+         * @return std
+         */
+        public String convertTime(String std) {
+            String date_s = std;
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            try {
+                Date date = dt.parse(date_s);
+
+                SimpleDateFormat dt1 = new SimpleDateFormat("HH:mm");
+                String tmpTimte = dt1.format(date);
                 Date myDate = dt1.parse(tmpTimte);
                 Calendar cal =Calendar.getInstance();
                 cal.setTime(myDate);

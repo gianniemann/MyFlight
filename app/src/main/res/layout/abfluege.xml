@@ -15,7 +15,7 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abflüge"
+            android:text="@string/abfluege"
             android:textSize="50sp" />
 
         <LinearLayout
@@ -43,7 +43,7 @@
                 android:layout_width="200sp"
                 android:layout_height="53sp"
                 android:layout_gravity="right"
-                android:hint="Zielort"
+                android:hint="@string/zielort"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.462"
@@ -97,35 +97,42 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="Flugnummer" />
+                            android:text="@string/flugnummer" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="Abflug geplant" />
+                            android:text="@string/datum" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="Abflug erwartet" />
+                            android:text="@string/geplant" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="Zielort" />
+                            android:text="@string/abflug_erwartet" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="status" />
+                            android:text="@string/zielort" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="7sp"
+                            android:text="@string/status" />
 
 
                         <TextView
@@ -133,14 +140,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="Gate" />
+                            android:text="@string/gate" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="7sp"
-                            android:text="airline" />
+                            android:text="@string/airline" />
 
                     </TableRow>
                 </TableLayout>
@@ -154,9 +161,8 @@
         android:layout_height="49dp"
         android:layout_gravity="bottom"
         android:background="@color/btngreen"
-        android:text="Zurück"
+        android:text="@string/zurück"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

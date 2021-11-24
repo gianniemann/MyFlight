@@ -27,7 +27,7 @@
         android:layout_width="357dp"
         android:layout_height="46dp"
         android:background="@color/btngreen"
-        android:text="Speichern"
+        android:text="@string/speichern"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="72dp"
-        android:text="Bitte geben sie ihren Namen ein"
+        android:text="@string/hinweis_name"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginTop="16dp"
         android:duplicateParentState="false"
-        android:text="Hallo"
+        android:text="@string/hallo"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
